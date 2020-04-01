@@ -29,4 +29,8 @@ urlpatterns = [
     path('login/',views.user_login,name='login'),
     path('logout/',views.logout,name='user_logout'),
     path('success/',views.success,name="user_success"),
+    path('fogotpassword/',views.forgot_password,name='forgot'),
+    path('passwordactivation/<slug:surl>/',
+         views.passwordactivation, name='passwordactivation'),
+
 ]
