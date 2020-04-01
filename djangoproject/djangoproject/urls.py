@@ -27,4 +27,6 @@ urlpatterns = [
     path('activate/<slug:surl>/', views.activate, name='activate'),
     path('s_reg/',views.successful_register,name="s_reg"),
     path('login/',views.user_login,name='login'),
+    path('logout/',views.logout,name='user_logout'),
+    path('success/',views.success,name="user_success"),
 ]
