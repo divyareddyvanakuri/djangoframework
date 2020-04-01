@@ -118,6 +118,11 @@ def forgot_password(request):
         email = request.POST['email']
         user=User.objects.get(email=email)
         username = user.username
+        token = tokenActivation(username)
+        current_site = get_current_site(request)
+        domain_name = current_site.domain
+        surl = get_surl(str(token))
+        z = surl.split("/")
         return HttpResponse("setpassword through mailed link")    
     else:
         return render(request,'email.html')
