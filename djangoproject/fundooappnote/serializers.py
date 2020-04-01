@@ -9,5 +9,11 @@ class RegisterSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class LoginSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Person
+        fields = ['username', 'password']
+
+
 
 

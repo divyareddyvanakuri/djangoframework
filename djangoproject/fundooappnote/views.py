@@ -96,7 +96,10 @@ def user_login(request):
         if user is not None:
             if user.is_active:
                 auth.login(request,user)
-                return HttpResponseRedirect(reverse('user_success'))   
+                return HttpResponseRedirect(reverse('user_success'))
+        else:
+            context['error']="provide valide credentials...!!"
+            return render(request,'login.html',context)    
     else:
         return render(request,'login.html')
 
