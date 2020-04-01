@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+<h1>Welcome</h1>
+<p>you can SignUp here</p>
+<h2>Registration Form</h2>
+<form action="" method="POST">{% csrf_token %}
+    <input type="text" name="username" id='username'placeholder="Username"> <br>
+    <br>
+    <input type="email" name="email" id='email' placeholder="Email"><br>
+    <br>
+    <input type="password" name="password" id="password" placeholder="Enter Password"><br>
+    <br>
+    <input type="password" name="confirmpassword" id='confirmpassword' placeholder="Re-enter Password"><br>
+    <br>
+    <p>{{error}}</p>
+    <input type="submit"value="Submit" id="submit">
+    <div>
+        Already have an account? <a href="{% url 'login' %}">Login</a>
+    </div>
+</form>
+</div>
+{% endblock  %}
