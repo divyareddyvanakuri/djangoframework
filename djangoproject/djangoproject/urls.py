@@ -24,14 +24,5 @@ schema_view = get_swagger_view(title='fundooNotes API')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('signup/',views.user_register,name='signup'),
-    path('login/',views.user_login,name='login'),
-    path('success/',views.success,name="user_success"),
-     path('s_reg/',views.successful_register,name="s_reg"),
-    path('fpassword/',views.forgot_password,name='forgot'),
-    # path("without-cache/",views.withoutCache, name='withoutcache'),
-    # path("preview-cache/",views.previewCache, name='withcache'),
-    path('activate/<slug:surl>/', views.activate, name='activate'),
-    path('passwordactivation/<slug:surl>/',
-         views.passwordactivation, name='passwordactivation'),
-    path('logout/',views.logout,name='user_logout'),
+    
 ]
