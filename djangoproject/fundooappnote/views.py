@@ -111,3 +111,14 @@ def success(request):
     context = {}
     context['user']=request.user
     return render(request,"logout.html", context) 
+
+def forgot_password(request):
+    context = {}
+    if request.method == 'POST':
+        email = request.POST['email']
+        user=User.objects.get(email=email)
+        username = user.username
+        return HttpResponse("setpassword through mailed link")    
+    else:
+        return render(request,'email.html')
+
