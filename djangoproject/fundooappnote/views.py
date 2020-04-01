@@ -79,9 +79,24 @@ def activate(request, surl):
         user.save()
         return HttpResponseRedirect(reverse('s_reg', ))
     return HttpResponse("user not existed")
-    
+
 def successful_register(request):
     context = {}
     context['user']=request.user
     return render(request,"success.html", context) 
+
+
+@csrf_protect
+def user_login(request):
+    context = {}
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = auth.authenticate(username=username,password=password)
+        if user is not None:
+            if user.is_active:
+                auth.login(request,user)
+                return HttpResponseRedirect(reverse('user_success'))   
+    else:
+        return render(request,'login.html')
 
