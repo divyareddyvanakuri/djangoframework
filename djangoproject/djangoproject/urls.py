@@ -25,4 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('signup/',views.user_register,name='signup'),
     path('activate/<slug:surl>/', views.activate, name='activate'),
+    path('s_reg/',views.successful_register,name="s_reg"),
 ]
