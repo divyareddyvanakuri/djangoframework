@@ -140,7 +140,10 @@ def passwordactivation(request,surl):
     if request.method == 'POST':
         if request.POST['password'] == request.POST['confirmpassword']:
             password = request.POST['password']
-            user = User.objects.get(username=username)
+            try:
+                user = User.objects.get(username=username)
+            except User.DoesNotExist:
+                return HttpResponse(status=status.HTTP_404_NOT_FOUND)
             user.set_password(password)
             user.save()
             return HttpResponseRedirect(reverse('s_reg', ))
