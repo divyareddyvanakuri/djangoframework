@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <p>User <b>{{user.username}}</b> is logged in successfully</p>
+        {% csrf_token %}
+    <div>
+        <a href="{% url 'user_logout' %}">Logout</a>
+    </div>
+
+{% endblock  %}
