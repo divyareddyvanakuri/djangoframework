@@ -132,3 +132,18 @@ def forgot_password(request):
     else:
         return render(request,'email.html')
 
+#password activation through jwt
+@csrf_protect
+def passwordactivation(request,surl):
+    print("surl :", surl)
+    username = tokendecode(surl)
+    if request.method == 'POST':
+        if request.POST['password'] == request.POST['confirmpassword']:
+            password = request.POST['password']
+            user = User.objects.get(username=username)
+            user.set_password(password)
+            user.save()
+            return HttpResponseRedirect(reverse('s_reg', ))
+    return render(request,'forgotpassword.html')
+
+
