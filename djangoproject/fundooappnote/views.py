@@ -69,9 +69,13 @@ def user_register(request):
 @csrf_protect
 def activate(request, surl):
     print("surl:",surl)
-    username = tokendecode(surl) 
-    user = User.objects.get(username=username)
+    username = tokendecode(surl)
+    try:    
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return HttpResponse(status=status.HTTP_404_NOT_FOUND)
     if user is not None:
+        user.is_active = True
         user.save()
         return HttpResponseRedirect(reverse('s_reg', ))
     return HttpResponse("user not existed")
