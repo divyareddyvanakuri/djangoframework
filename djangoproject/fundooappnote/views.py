@@ -79,4 +79,9 @@ def activate(request, surl):
         user.save()
         return HttpResponseRedirect(reverse('s_reg', ))
     return HttpResponse("user not existed")
+    
+def successful_register(request):
+    context = {}
+    context['user']=request.user
+    return render(request,"success.html", context) 
 
