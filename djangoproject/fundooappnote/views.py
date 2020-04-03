@@ -112,6 +112,10 @@ def user_login(request):
     return render(request,'login.html')
 
 def logout(request,surl):
+    print("logout_surl:",surl)
+    username = tokendecode(surl)
+    obj_redis.delete(username)
+    print(obj_redis.get(username))
     auth.logout(request)
     return HttpResponseRedirect(reverse('login'))
 
