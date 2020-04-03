@@ -19,6 +19,16 @@
 </form>
     
 </div>
-
+<script>
+    $(document).ready(function() {
+        $("#login").click(function(){
+                var email = $("#email").val();
+                var password = $("#password").val();
+                if( email =='' || password ==''){
+                alert("Please fill all fields...!!!!!!");
+                } 
+            });
+        });
+</script>
 
 {% endblock  %}
