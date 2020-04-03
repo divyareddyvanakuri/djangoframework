@@ -9,5 +9,14 @@
     <input type="submit"value="Submit" id="btn">
 </form>
 </div>
-
+<script >
+    $(document).ready(function(){
+        $("#btn").click(function(){
+            var email = $("#email").val();
+            if (email == '') {
+                alert("Please fill all fields...!!!!!!");
+            }
+        });
+      });
+</script>
 {% endblock  %}
