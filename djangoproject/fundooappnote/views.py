@@ -91,6 +91,11 @@ def user_login(request):
         username = request.POST['username']
         password = request.POST['password']
         user = auth.authenticate(username=username,password=password)
+        surl = obj_redis.get(username)
+        name = tokendecode(surl)
+        if username == name:
+            msg2 = render_to_string('logout.html',{'username': username,'surl':surl})
+            return HttpResponse(msg2)
         if user is not None:
             if user.is_active:
                 # auth.login(request,user)
