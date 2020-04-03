@@ -17,6 +17,9 @@ def tokenActivation(username):
     }
     # time.sleep(32)
     token = jwt.encode(payload, 'SECRET_KEY').decode('utf-8')
+    surl = get_surl(str(token))
+    z = surl.split("/")
+    token = z[2]
     return token
 
 def tokendecode(surl):

@@ -13,8 +13,12 @@
     <br>
     <P>{{error}}</P>
     <input type="submit" value="Login" id="login">
-    
+    <div>
+        Doesn't have an account? <a href="{% url 'signup' %}">signup</a>
+    </div>
 </form>
-
+    
 </div>
+
+
 {% endblock  %}

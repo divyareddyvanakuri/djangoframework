@@ -1,10 +1,7 @@
-{% extends 'base.html' %}
+{% autoescape off %}
+<p>User <b>{{username}}</b>,is logged in successfully</p>
+<div>
+    <a href="{% url 'user_logout' surl=surl %}">Logout</a>
+</div>
 
-{% block body %}
-    <p>User <b>{{user.username}}</b> is logged in successfully</p>
-        {% csrf_token %}
-    <div>
-        <a href="{% url 'user_logout' %}">Logout</a>
-    </div>
-
-{% endblock  %}
+{% endautoescape %}
