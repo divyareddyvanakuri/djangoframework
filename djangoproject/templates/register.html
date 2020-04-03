@@ -42,6 +42,19 @@
             }else{
                 alert("invalid id")
             }
+            $.ajax({
+                url: route.url,
+                data : JSON.stringify(data),
+                method : 'POST',
+                headers: {
+                              'X-CSRF-Token': token 
+                         },
+                success: function (data) { "success "},
+                error: function (data) {"error"}
+          });
+        });
+
             
+    });
 </script>
 {% endblock  %}
