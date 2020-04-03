@@ -22,5 +22,26 @@
     </div>
 </form>
 </div>
-
+<script>
+    $(document).ready(function() {
+        $("#submit").click(function() {
+            var token =  $('input[name="csrfToken"]').attr('value'); 
+            var username = $("#username").val();
+            var email = $("#email1").val();
+            var password = $("#password").val();
+            var confirmpassword = $("#confirmpassword").val();
+            var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/
+            if (username == '' || email == '' || password == '' || confirmpassword == '') {
+            alert("Please fill all fields...!!!!!!");
+            } else if ((password.length) < 6) {
+            alert("Password should atleast 6 character in length...!!!!!!");
+            } else if (!(password).match(confirmpassword)) {
+            alert("Your passwords don't match. Try again?");
+            } else if(emailReg.test(email)){
+                        alert("valid id")
+            }else{
+                alert("invalid id")
+            }
+            
+</script>
 {% endblock  %}
